@@ -1,11 +1,13 @@
 package com.example.refactor.model;
 
+import java.util.List;
+
 public class Song extends BaseDomain{
     private String explicit;
     private String playable;
     private String popularity;
     private Album album;
-    private SpotifyArtist spotifyArtist;
+    private List<SpotifyArtist> spotifyArtist;
 
     public String getExplicit() {
         return explicit;
@@ -31,11 +33,11 @@ public class Song extends BaseDomain{
         this.popularity = popularity;
     }
 
-    public SpotifyArtist getSpotifyArtist() {
+    public List<SpotifyArtist> getSpotifyArtist() {
         return spotifyArtist;
     }
 
-    public void setSpotifyArtist(SpotifyArtist spotifyArtist) {
+    public void setSpotifyArtist(List<SpotifyArtist> spotifyArtist) {
         this.spotifyArtist = spotifyArtist;
     }
 

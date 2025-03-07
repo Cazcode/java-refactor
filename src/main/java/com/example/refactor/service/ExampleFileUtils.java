@@ -6,6 +6,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.net.URL;
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 public class ExampleFileUtils {
@@ -17,7 +18,7 @@ public class ExampleFileUtils {
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-        return null;
+        return (JSONObject) Collections.emptyMap();
     }
 
     public static File getFileFromResources(String fileName) {
@@ -46,7 +47,7 @@ public class ExampleFileUtils {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return null;
+        return (JSONObject) Collections.emptyMap();
     }
 
 }

@@ -4,10 +4,10 @@ public abstract class BaseDomain {
     private String id;
     private String name;
 
-    public BaseDomain() {
+    protected BaseDomain() {
     }
 
-    public BaseDomain(String id, String name) {
+    protected BaseDomain(String id, String name) {
         this.id = id;
         this.name = name;
     }
