@@ -24,6 +24,6 @@ public class Solution {
                 .stream()
                 .forEach(song ->
                         LOGGER.info(" - {} - {} - {} - {}", song.getId(), song.getName(),
-                                song.getSpotifyArtist().getName(), song.getAlbumName()));
+                                song.getSpotifyArtist().getName(), song.getAlbum().getName()));
     }
 }

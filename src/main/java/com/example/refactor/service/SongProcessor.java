@@ -1,5 +1,6 @@
 package com.example.refactor.service;
 
+import com.example.refactor.model.Album;
 import com.example.refactor.model.Song;
 import com.example.refactor.model.SpotifyArtist;
 import org.json.simple.JSONArray;
@@ -30,15 +31,17 @@ public class SongProcessor {
                     song.setPlayable(trackJSON.get("is_playable").toString());
                     song.setName(trackJSON.get("name").toString());
                     song.setPopularity(trackJSON.get("popularity").toString());
-                    song.setAlbumType(albumJSON.get("album_type").toString());
-                    song.setAlbumId(albumJSON.get("id").toString());
-                    song.setAlbumName(albumJSON.get("name").toString());
-                    song.setAlbumReleaseDate(albumJSON.get("release_date").toString());
-                    song.setAlbumTotalTracks(albumJSON.get("total_tracks").toString());
+
+                    Album album = new Album();
+                    album.setId(albumJSON.get("album_type").toString());
+                    album.setId(albumJSON.get("id").toString());
+                    album.setName(albumJSON.get("name").toString());
+                    album.setReleaseDate(albumJSON.get("release_date").toString());
+                    album.setTotalTracks(albumJSON.get("total_tracks").toString());
+                    song.setAlbum(album);
 
                     for (Object element : artistsJSON) {
                         JSONObject artistJSON = (JSONObject) element;
-
                         SpotifyArtist artist = new SpotifyArtist();
                         artist.setId(artistJSON.get("id").toString());
                         artist.setName(artistJSON.get("name").toString());
