@@ -5,8 +5,7 @@ public class Song extends BaseDomain{
     private String playable;
     private String popularity;
     private Album album;
-
-    public SpotifyArtist spotifyArtist;
+    private SpotifyArtist spotifyArtist;
 
     public String getExplicit() {
         return explicit;
