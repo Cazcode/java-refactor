@@ -9,6 +9,10 @@ import org.json.simple.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Gracias a que en este caso el objeto Song contiene como atributos los objetos album y artist
+ * Se usan los mappers respectivos y se agregan las instancias usando la inyección de dependencias
+ */
 public class SongMapper implements Mapper<JSONObject, Song>{
 
     Mapper<JSONObject, Album> albumMapper;

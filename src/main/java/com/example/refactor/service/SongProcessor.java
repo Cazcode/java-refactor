@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class SongProcessor {
 
-    private Mapper<JSONObject, Song> songMapper;
+    private final Mapper<JSONObject, Song> songMapper;
 
     public SongProcessor(Mapper<JSONObject, Song> songMapper) {
         this.songMapper = songMapper;
@@ -20,6 +20,7 @@ public class SongProcessor {
     public List<Song> processSongs(JSONObject playlist) {
         final JSONArray items = (JSONArray) playlist.get("items");
         List<JSONObject> collect = new ArrayList<>(items);
+        // Se usa Stream API de Java 8
         return collect.stream()
                 .filter(i ->  i.containsKey("track"))
                 .map(item -> {

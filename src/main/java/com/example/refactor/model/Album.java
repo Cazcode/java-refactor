@@ -1,5 +1,8 @@
 package com.example.refactor.model;
 
+/**
+ * Clase creada a partir de la abstraccion de los datos de album en la clase Song
+ */
 public class Album extends BaseDomain{
     private String type;
     private String releaseDate;

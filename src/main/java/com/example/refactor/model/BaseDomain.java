@@ -1,5 +1,8 @@
 package com.example.refactor.model;
 
+/**
+ * Clase padre que abstrae atributos y comportamientos genericos entre las clases de dominio
+ */
 public abstract class BaseDomain {
     private String id;
     private String name;

@@ -6,7 +6,9 @@ public class Song extends BaseDomain{
     private String explicit;
     private String playable;
     private String popularity;
+//    Se realiza la abstraccion de los datos y se crea una nueva clase
     private Album album;
+    //Se aplica el correcto encapsulamiento para este atributo y se usa un List, debido a que en el input de los datos se identifica que posee un listado o arreglo de este objeto
     private List<SpotifyArtist> spotifyArtist;
 
     public String getExplicit() {
