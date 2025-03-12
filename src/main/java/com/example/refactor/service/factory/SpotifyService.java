@@ -1,14 +1,9 @@
 package com.example.refactor.service.factory;
 
-import com.example.refactor.mapper.AlbumMapper;
-import com.example.refactor.mapper.ArtistMapper;
 import com.example.refactor.mapper.Mapper;
-import com.example.refactor.mapper.SongMapper;
 import com.example.refactor.mapper.factory.MAPPERTYPE;
 import com.example.refactor.mapper.factory.MapperFactory;
-import com.example.refactor.model.Album;
 import com.example.refactor.model.Song;
-import com.example.refactor.model.SpotifyArtist;
 import com.example.refactor.service.SongProcessor;
 import org.json.simple.JSONObject;
 
