@@ -8,13 +8,12 @@ import com.example.refactor.mapper.SongMapper;
 public class MapperFactory {
 
     public static Mapper getMapper(MAPPERTYPE type) {
-        if(MAPPERTYPE.SONG.equals(type)) {
-            return new SongMapper(new AlbumMapper(), new ArtistMapper());
-        }
-        if(MAPPERTYPE.ALBUM.equals(type)) {
-            return new AlbumMapper();
-        }
-        return new ArtistMapper();
+//        Se implementa switch expression, mejorando la lectura del codigo
+        return switch (type) {
+            case MAPPERTYPE.SONG -> new SongMapper(new AlbumMapper(), new ArtistMapper());
+            case ALBUM -> new AlbumMapper();
+            default -> new ArtistMapper();
+        };
     }
 
 }

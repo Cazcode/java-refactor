@@ -5,10 +5,11 @@ package com.example.refactor.service.factory;
  */
 public class ServiceFactory {
 
-    public MusicStreamingService createService(SERVICETYPE servicetype) {
-        if(SERVICETYPE.DEZZER.equals(servicetype)) {
-            return new DezzerService();
-        }
-        return new SpotifyService();
+    public MusicStreamingService getMusicStreamingService(SERVICETYPE servicetype) {
+//        Se implementa switch expression, mejorando la lectura del codigo
+        return switch (servicetype) {
+            case DEZZER -> new DezzerService();
+            default -> new SpotifyService();
+        };
     }
 }

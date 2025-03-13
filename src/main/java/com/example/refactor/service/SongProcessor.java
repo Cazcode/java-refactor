@@ -5,8 +5,8 @@ import com.example.refactor.model.Song;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class SongProcessor {
@@ -18,14 +18,15 @@ public class SongProcessor {
     }
 
     public List<Song> processSongs(JSONObject playlist) {
-        final JSONArray items = (JSONArray) playlist.get("items");
-        List<JSONObject> collect = new ArrayList<>(items);
-        // Se usa Stream API de Java 8
-        return collect.stream()
-                .filter(i ->  i.containsKey("track"))
-                .map(item -> {
-                    JSONObject trackJSON = (JSONObject) item.get("track");
-                    return songMapper.map(trackJSON);
+        final var items = (JSONArray) playlist.get("items");
+//        Se usa var evitando redundancia en la especificacion de los tipos de los objetos
+//        Se usa instancesof expresion y aplicar un filtro para los objetos
+        return (List<Song>) items.stream()
+                .filter(itemJson -> itemJson instanceof JSONObject item && item.containsKey("track"))
+                .map( item -> {
+                    var json = (JSONObject) item;
+                    var track = (JSONObject) json.get("track");
+                    return Objects.nonNull(track) ? songMapper.map(track) : null;
                 })
                 .collect(Collectors.toList());
     }

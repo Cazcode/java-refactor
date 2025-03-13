@@ -21,7 +21,7 @@ public class SpotifyService implements MusicStreamingService {
          * Creacion de instancias específicas de las clases mappers para hacer uso de las inyeccion de dependencias
          */
         Mapper<JSONObject, Song> songMapper = MapperFactory.getMapper(MAPPERTYPE.SONG);
-        SongProcessor processor = new SongProcessor(songMapper);
+        var processor = new SongProcessor(songMapper);
         return processor.processSongs(playlist);
     }
 }

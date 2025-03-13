@@ -1,5 +1,7 @@
 package com.example.refactor.model;
 
+import java.util.List;
+
 /**
  * Clase creada a partir de la abstraccion de los datos de album en la clase Song
  */
@@ -8,14 +10,49 @@ public class Album extends BaseDomain{
     private String releaseDate;
     private String totalTracks;
 
-    public Album() {
+    public Album(AlbumBuilder builder) {
+        super(builder.id, builder.name);
+        this.type = builder.type;
+        this.releaseDate = builder.releaseDate;
+        this.totalTracks = builder.totalTracks;
     }
 
-    public Album(String id, String name, String type, String releaseDate, String totalTracks) {
-        super(id, name);
-        this.type = type;
-        this.releaseDate = releaseDate;
-        this.totalTracks = totalTracks;
+    public static class AlbumBuilder {
+        private String id;
+        private String name;
+        private String type;
+        private String releaseDate;
+        private String totalTracks;
+
+
+        public AlbumBuilder setId(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public AlbumBuilder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public AlbumBuilder setType(String type) {
+            this.type = type;
+            return this;
+        }
+
+        public AlbumBuilder setReleaseDate(String releaseDate) {
+            this.releaseDate = releaseDate;
+            return this;
+        }
+
+        public AlbumBuilder setTotalTracks(String totalTracks) {
+            this.totalTracks = totalTracks;
+            return this;
+        }
+
+        public Album build() {
+            return new Album(this);
+        }
     }
 
     public String getType() {
