@@ -133,7 +133,7 @@ El no implementa algunos principios de POO
 - Se refactoriza el código para mejorar la estructura y la reutilización.
 - Se introdujo una nueva clase `Album` para encapsular la lógica relacionada con los albumnes, implementando la abstracción.
 - Se creó una clase padre `BaseDomain` para aplicar herencia y reutilizar métodos comunes entre las clases hijas.
-- Se refactoriza el acceso a los atributos de la clase `Song`, cambiando el atributo `spotifyArtist` de público a privado y proporcionando un getter y setter para acceder a él.
+- Se refactoriza el acceso a los atributos de la clase `Song`, cambiando el atributo `artist` de público a privado y proporcionando un getter y setter para acceder a él.
 
 **Resultado**:  
 Codigo que implementa los principios POO 
@@ -171,13 +171,15 @@ El código ahora es más modular, más fácil de mantener y las clases tienen re
 Los patrones de diseno aplicados son los patrones de creacion y comport
 1. **Factory Method**,
 2. **Strategy**,
+3. **Builder**
 
 **Solución**:
 - Se agrega la familia de servicios de streaming permitiendo el uso de interfaces, lo cual soluciona uno de los puntos en los lineamientos del proyecto
-- Se implementa **Factory Method** para las familias de servicios `MusicStreamingService` como clase padre
+- Se implementa el patron **Factory Method** para las familias de servicios `MusicStreamingService` como clase padre
   - Se crea un enum `SERVICETYPE` para la definicion del tipo de servicio que se desea crear.
-- Se implementa el **Strategy** para la creacion de la clase `Mapper` para lac reacion de genericos que permitan facilitar el mapeo de objetos y sean intercambiables facilmente.
-- Se implementa **inyeccion de dependecia** removiendo la responsabilidad de instanciar objetos en las respectivas clases.
+- Se implementa el patron **Strategy** para la creacion de la clase `Mapper` para lac reacion de genericos que permitan facilitar el mapeo de objetos y sean intercambiables facilmente.
+- Se implementa el patron **inyeccion de dependecia** removiendo la responsabilidad de instanciar objetos en las respectivas clases.
+- Se implementa el patron **Builder** para facilitar la creacion de los objetos con muchos atributos, además facilitar el mapeo de objetos 
 
 **Resultado**:  
 El código ahora es más modular, más fácil de mantener y las clases tienen responsabilidades claras y bien definidas.
@@ -193,9 +195,12 @@ En la refactorizacion del programa se implementa la version 1.8 de java ademas d
 4. **Collections**,
 5. **Interfaces**,
 6. **Java I/O**
+7. **Try with resources**
 
 **Solución**:
 - Se modifica el método `getJsonFromFileName` en la clase `ExampleFileUtils` para separar las responsabilidades de obtencion del recurso y mappeo a un objeto Json y ahora solo mapea el objeto.
 - Se crea el método `getStringJsonFromFile` en la clase `ExampleFileUtils` para la obtencion del recurso y lo retorna como un String Json.
 - Se implementa **Stream API** en la clase `SongProcessor` asi como en `Solution`
+- Se implementa **Generics** para la creacion de las familias (Mappeo, Servicios)
+- Se implementa **Collections**, **Programacion funcional** y **Stream API** para mejorar el codigo y facilitar su entendimiento
 ---
