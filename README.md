@@ -27,6 +27,8 @@ Este documento describe los errores encontrados durante la ejecución del proyec
     - [Violación al Principio SOLID](#violación-al-principio-solid)
 - [Patrones De Diseño](#patrones-de-diseño)
 - [Refactorizacion](#refactorizacion)
+  - [Refactorizacion](#refactorizacion-parte-1)
+  - [Refactorizacion](#refactorizacion-parte-2)
 
 ---
 
@@ -184,7 +186,9 @@ El código ahora es más modular, más fácil de mantener y las clases tienen re
 
 ---
 
-### Refactorizacion 
+### Refactorizacion
+
+### Refactorizacion parte 1 
 En la refactorizacion del programa se implementa la version 1.8 de java ademas de algunas funcionalidades:
 
 1. **Stream API**,
@@ -198,4 +202,24 @@ En la refactorizacion del programa se implementa la version 1.8 de java ademas d
 - Se modifica el método `getJsonFromFileName` en la clase `ExampleFileUtils` para separar las responsabilidades de obtencion del recurso y mappeo a un objeto Json y ahora solo mapea el objeto.
 - Se crea el método `getStringJsonFromFile` en la clase `ExampleFileUtils` para la obtencion del recurso y lo retorna como un String Json.
 - Se implementa **Stream API** en la clase `SongProcessor` asi como en `Solution`
+---
+
+### Refactorizacion parte 2
+En la parte 2 del refactor se realiza las siguientes acciones:
+1. Migracion de la version java 8 a la version java 23.
+2. Se actualizan los pluguisn de maven:
+   1. maven-compiler-plugin de la version 3.8.1 a la version 3.10.1
+   2. maven-jar-plugin de la version 3.2.0 a la version 3.10.1
+   3. maven-shade-plugin se modifica la configuracion.
+
+En la clase mapper ArtitsMapper se crea nueva funcion para obtener un listado de Artist
+
+
+1. **var**,
+2. **switch expression**,
+3. **Programacion funcional**,
+4. **Collections**,
+5. **Interfaces**,
+6. **Pattern Matching**
+7. **Stream API**
 ---

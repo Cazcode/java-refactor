@@ -1,7 +1,5 @@
 package com.example.refactor.model;
 
-import java.util.List;
-
 /**
  * Clase creada a partir de la abstraccion de los datos de album en la clase Song
  */
