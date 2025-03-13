@@ -22,7 +22,7 @@ public class StreamingController {
     public List<Song> process(JSONObject playlist, SERVICETYPE servicetype) {
 //        Al aplicar una fabrica es posible realizar un solo llamado y gracias al polimorfismo cada implementacion especifica tiene su comportamiento
 //        y la clase controller no necesita saber como funciona solo realiza el respectivo llamado de process
-        MusicStreamingService service =  factory.createService(servicetype);
+        MusicStreamingService service =  factory.getMusicStreamingService(servicetype);
         return service.process(playlist);
     }
 

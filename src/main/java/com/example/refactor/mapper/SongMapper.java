@@ -1,47 +1,39 @@
 package com.example.refactor.mapper;
 
-import com.example.refactor.model.Album;
 import com.example.refactor.model.Song;
-import com.example.refactor.model.SpotifyArtist;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Gracias a que en este caso el objeto Song contiene como atributos los objetos album y artist
  * Se usan los mappers respectivos y se agregan las instancias usando la inyección de dependencias
  */
-public class SongMapper implements Mapper<JSONObject, Song>{
+public class SongMapper implements Mapper<JSONObject, Song>, JsonStringValueExtractor {
 
-    Mapper<JSONObject, Album> albumMapper;
-    Mapper<JSONObject, SpotifyArtist> artistMapper;
+    AlbumMapper albumMapper;
+    ArtistMapper artistMapper;
 
-    public SongMapper(Mapper<JSONObject, Album> albumMapper, Mapper<JSONObject, SpotifyArtist> artistMapper) {
+    public SongMapper(AlbumMapper albumMapper, ArtistMapper artistMapper) {
         this.albumMapper = albumMapper;
         this.artistMapper = artistMapper;
     }
 
     @Override
     public Song map(JSONObject trackJSON) {
-        Song song = new Song();
-        song.setExplicit(trackJSON.get("explicit").toString());
-        song.setId(trackJSON.get("id").toString());
-        song.setPlayable(trackJSON.get("is_playable").toString());
-        song.setName(trackJSON.get("name").toString());
-        song.setPopularity(trackJSON.get("popularity").toString());
         JSONObject albumJSON = (JSONObject) trackJSON.get("album");
-        song.setAlbum(albumMapper.map(albumJSON));
-        List<SpotifyArtist> spotifyArtists = new ArrayList<>();
-        JSONArray artistsJSON = (JSONArray) trackJSON.get("artists");
-        for (Object element : artistsJSON) {
-            JSONObject artistJSON = (JSONObject) element;
-            spotifyArtists.add(artistMapper.map(artistJSON));
-        }
-        song.setSpotifyArtist(spotifyArtists);
-        return song;
+        return new Song.SongBuilder()
+                .setExplicit(extractStringValue(trackJSON, "explicit"))
+                .setId(extractStringValue(trackJSON, "id"))
+                .setPlayable(extractStringValue(trackJSON, "is_playable"))
+                .setName(extractStringValue(trackJSON, "name"))
+                .setPopularity(extractStringValue(trackJSON, "popularity"))
+                .setAlbum(albumMapper.map(albumJSON))
+                .setArtist(artistMapper.mapList(trackJSON))
+                .build();
     }
 
 
+    @Override
+    public String extractStringValue(JSONObject json, String key) {
+        return json.get(key).toString();
+    }
 }

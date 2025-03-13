@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class ExampleFileUtils {
 
-    public static JSONObject getJsonFromFileName(String fileName) throws IOException {
+    public static JSONObject getJSONObjectFromFileName(String fileName) throws IOException {
         JSONParser parser = new JSONParser();
         try {
             String stringObject = getStringJsonFromFile(fileName);

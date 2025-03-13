@@ -19,7 +19,7 @@ public class Solution {
         final String playlistFileName = PropertyFactory.getProperties().getProperty("refactorpractice.playlist.filename");
         try {
 //            Se crean las instancias y se obtienen los objetos para ser enviados en los constructores que los soliciten
-            JSONObject playlist = ExampleFileUtils.getJsonFromFileName(playlistFileName);
+            JSONObject playlist = ExampleFileUtils.getJSONObjectFromFileName(playlistFileName);
             ServiceFactory serviceFactory = new ServiceFactory();
             StreamingController controller = new StreamingController(serviceFactory);
 //           Se llama el meotdo principal del controller y se usa Stream Api de java 8 para realizar el print de los datos obtenidos
@@ -27,7 +27,7 @@ public class Solution {
                     .stream()
                     .forEach(song ->
                             LOGGER.info(" - {} - {} - {} - {}", song.getId(), song.getName(),
-                                    song.getSpotifyArtist().get(0).getName(), song.getAlbum().getName()));
+                                    song.getArtist().get(0).getName(), song.getAlbum().getName()));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
